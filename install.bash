@@ -19,6 +19,7 @@ symlink() {
 
 dotfiles=(
   gitconfig
+  zshrc
 )
 
 # Removing any existing directories that match the name of the dotfile but are not symbolic links.
