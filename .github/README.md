@@ -12,8 +12,6 @@ $ pwd
 /home/grok/Code/dotfiles
 
 $ bash install.bash
-         ~/Code/dotfiles/zshrc -> ~/.zshrc
-
      ~/Code/dotfiles/gitconfig -> ~/.gitconfig
      ~/Code/dotfiles/gitignore -> ~/.gitignore
          ~/Code/dotfiles/zshrc -> ~/.zshrc
