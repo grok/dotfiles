@@ -50,3 +50,8 @@ esac
 # It's why we got divorced.
 export PATH="$HOME/.emacs.d/bin:$PATH"
 alias emacs="emacsclient -c -a 'emacs'"
+
+# Navigation
+alias ll="ls -laF ${colorflag}"
+alias ..="cd .."
+alias ~="cd ~" # `cd` is probably faster to type though

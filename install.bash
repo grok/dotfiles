@@ -19,6 +19,7 @@ symlink() {
 
 dotfiles=(
   gitconfig
+  gitignore
   zshrc
 )
 

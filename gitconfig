@@ -10,7 +10,7 @@
   qLog = !git --no-pager log --pretty=tformat:'%C(yellow)%h%Creset %C(cyan)%an%Creset %C(green)%ad%Creset %s' --date=short --reverse --color
   aliases = !git --no-pager config --get-regexp alias
   config-list = !git --no-pager config --global --list
-  branches = !git --no-pager branch
+  branches = !git --no-pager branch --all
   diffs = !git --no-pager diff
 [color]
   ui = auto
