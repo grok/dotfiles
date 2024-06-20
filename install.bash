@@ -12,7 +12,6 @@
 # Not all implementations of ln support the -v option.
 # Different Unix-like operating systems may have different versions of
 # the ln command with varying supported options.
-Non-Portable: Because the -v option is not universally supported, using it can lead to issues on systems where this option is not available.
 symlink() {
   printf '%30s -> %s\n' "${1/#$HOME/\~}" "${2/#$HOME/\~}"
   ln -nsf "$@"

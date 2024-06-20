@@ -14,7 +14,7 @@ $ pwd
 /home/grok/Code/dotfiles
 
 bash ./install.bash
-                              ~/Code/dotfiles/gitconfig -> ~/.gitconfig
+     ~/Code/dotfiles/gitconfig -> ~/.gitconfig
 ```
 
 ## Testing
