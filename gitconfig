@@ -1,0 +1,20 @@
+[init]
+  defaultBranch = main
+[user]
+  name = Sterling Hamilton
+  email = sterling.hamilton@gmail.com
+[core]
+  editor = nvim
+[alias]
+  qStatus = !git --no-pager status --short --branch
+  qLog = !git --no-pager log --pretty=tformat:'%C(yellow)%h%Creset %C(cyan)%an%Creset %C(green)%ad%Creset %s' --date=short --reverse --color
+  aliases = !git --no-pager config --get-regexp alias
+  config-list = !git --no-pager config --global --list
+  branches = !git --no-pager branch
+  diffs = !git --no-pager diff
+[color]
+  ui = auto
+[push]
+  default = matching
+[pull]
+  rebase = false
