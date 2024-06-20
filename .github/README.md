@@ -13,7 +13,7 @@ In my current environment that looks like:
 $ pwd
 /home/grok/Code/dotfiles
 
-bash ./install.bash
+$ bash ./install.bash
      ~/Code/dotfiles/gitconfig -> ~/.gitconfig
 ```
 
