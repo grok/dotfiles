@@ -11,7 +11,9 @@ Here's how I run it:
 $ pwd
 /home/grok/Code/dotfiles
 
-$ bash install.bash
+$ chmod u+x install.rb
+
+$ ./install.rb
      ~/Code/dotfiles/gitconfig -> ~/.gitconfig
      ~/Code/dotfiles/gitignore -> ~/.gitignore
          ~/Code/dotfiles/zshrc -> ~/.zshrc
@@ -28,6 +30,7 @@ You can go to the home directory and check that the symlink exists.
 
 $ cd ~
 $ find . -maxdepth 1 -type l ! -xtype d -exec ls --color=auto -l {} +
+
 lrwxrwxrwx 1 grok grok 34 Jun 20 09:50 ./.gitconfig -> /home/grok/Code/dotfiles/gitconfig
 lrwxrwxrwx 1 grok grok 34 Jun 20 09:50 ./.gitignore -> /home/grok/Code/dotfiles/gitignore
 lrwxrwxrwx 1 grok grok 30 Jun 20 09:50 ./.zshrc -> /home/grok/Code/dotfiles/zshrc
