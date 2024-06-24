@@ -4,33 +4,71 @@
 # this way, updating them is as simple as git pull
 #
 # Author: Sterling Hamilton <sterling.hamilton@gmail.com>
-# Date: 2024.06.19
+# Date: 2024.06.24
 # License: MIT
 #
-# Kudos to @bahamas10 for the obvious pilfering.
+# Kudos to @bahamas10 for the obvious pilfering/inspiration.
 
+# We could just use `File` instead of `FileUtils` but
+# we want an easy way to truck over existing files.
 require 'fileutils'
 
-def symlink(source, target)
-  source_path = source.sub(/^#{Regexp.escape(ENV['HOME'])}/, '~')
-  target_path = target.sub(/^#{Regexp.escape(ENV['HOME'])}/, '~')
-  printf "%30s -> %s\n", source_path, target_path
+links = [
+  {
+    source: "gitconfig",
+    target: "#{ENV['HOME']}/.gitconfig"
+  },
+  {
+    source: "gitignore",
+    target: "#{ENV['HOME']}/.gitignore"
+  },
+  {
+    source: "nvim",
+    target: "#{ENV['HOME']}/.config/nvim"
+  },
+  {
+    source: "zshrc",
+    target: "#{ENV['HOME']}/.zshrc"
+  }
+]
 
+changes = []
+
+# This is purely for display purposes.
+def collect_changes(source, target, changes)
+  regex = /^#{Regexp.escape(ENV['HOME'])}/
+
+  source_path = source.sub(regex, '~')
+  target_path = target.sub(regex, '~')
+
+  changes << "%30s -> %s" % [source_path, target_path]
+end
+
+def symlink(source, target, changes)
+  collect_changes(source, target, changes)
   FileUtils.ln_s(source, target, force: true)
 end
 
-dotfiles = [
-  'gitconfig',
-  'gitignore',
-  'zshrc'
-]
+def prompt_to_remove(target)
+  puts "Target #{target} exists. Do you want to remove it? [y/N]"
+  response = $stdin.gets.chomp.downcase
+  response == 'y'
+end
 
-dotfiles.each do |file|
-  target = File.join(ENV['HOME'], ".#{file}")
+links.each do |file|
+  source = File.join(Dir.pwd, file[:source])
+  target = file[:target]
 
-  if File.directory?(target) && !File.symlink?(target)
-    FileUtils.rm_r(target)
+  if File.exist?(target)
+    if prompt_to_remove(target)
+      FileUtils.rm_r(target)
+    else
+      puts "Skipping #{target}"
+      next
+    end
   end
 
-  symlink(File.join(Dir.pwd, file), target)
+  symlink(source, target, changes)
 end
+
+puts changes
