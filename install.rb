@@ -72,3 +72,4 @@ links.each do |file|
 end
 
 puts changes
+puts "No changes made." if changes.empty?
